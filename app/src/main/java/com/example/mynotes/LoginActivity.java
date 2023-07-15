@@ -17,7 +17,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class Login extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     EditText emailEditText,passwordEditText;
     Button loginBtn;
@@ -36,7 +36,7 @@ public class Login extends AppCompatActivity {
         createAccountBtnTextView = findViewById(R.id.create_account_text_view_btn);
 
         loginBtn.setOnClickListener((v)-> loginUser() );
-        createAccountBtnTextView.setOnClickListener((v)->startActivity(new Intent(Login.this,CreateAccountActivity.class)) );
+        createAccountBtnTextView.setOnClickListener((v)->startActivity(new Intent(LoginActivity.this,CreateAccountActivity.class)) );
 
     }
 
@@ -65,15 +65,15 @@ public class Login extends AppCompatActivity {
                     //login is success
                     if(firebaseAuth.getCurrentUser().isEmailVerified()){
                         //go to mainactivity
-                        startActivity(new Intent(Login.this,MainActivity.class));
+                        startActivity(new Intent(LoginActivity.this,MainActivity.class));
                         finish();
                     }else{
-                        Utility.showToast(Login.this,"Email not verified, Please verify your email.");
+                        Utility.showToast(LoginActivity.this,"Email not verified, Please verify your email.");
                     }
 
                 }else{
                     //login failed
-                    Utility.showToast(Login.this,task.getException().getLocalizedMessage());
+                    Utility.showToast(LoginActivity.this,task.getException().getLocalizedMessage());
                 }
             }
         });
