@@ -20,11 +20,7 @@
             android:exported="false"
             android:label="@string/title_activity_note_details"
             android:theme="@style/Theme.MyNotes" />
-        <activity
-            android:name=".LoginActivity"
-            android:exported="false"
-            android:label="@string/title_activity_login"
-            android:theme="@style/Theme.MyNotes" /> <!-- <activity -->
+        <!-- <activity -->
         <!-- android:name=".NoteDetailsActivity" -->
         <!-- android:exported="false" -->
         <!-- android:label="@string/title_activity_new_details" -->
