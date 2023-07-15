@@ -78,7 +78,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-
     void changeInProgress(boolean inProgress){
         if(inProgress){
             progressBar.setVisibility(View.VISIBLE);
