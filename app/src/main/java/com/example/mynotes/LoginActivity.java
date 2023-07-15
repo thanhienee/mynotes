@@ -44,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
         passwordEditText = findViewById(R.id.password_edit_text);
         loginBtn = findViewById(R.id.login_btn);
         progressBar = findViewById(R.id.progress_bar);
-        createAccountBtnTextView = findViewById(R.id.create_text_view_btn);
+        createAccountBtnTextView = findViewById(R.id.create_account_text_view_btn);
 
         loginBtn.setOnClickListener((v) -> loginUser());
         createAccountBtnTextView.setOnClickListener((v) -> startActivity(new Intent(LoginActivity.this, CreateAccountActivity.class)));
@@ -54,8 +54,6 @@ public class LoginActivity extends AppCompatActivity {
     void loginUser(){
         String email = emailEditText.getText().toString();
         String password = passwordEditText.getText().toString();
-
-
         boolean isValidated = validateData(email, password);
         if(!isValidated) return;
         loginAccountInFireBase(email, password);
