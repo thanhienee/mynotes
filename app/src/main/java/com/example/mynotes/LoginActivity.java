@@ -11,32 +11,28 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {// login
 
     EditText emailEditText,passwordEditText;
     Button loginBtn;
     ProgressBar progressBar;
     TextView createAccountBtnTextView;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-
-        emailEditText = findViewById(R.id.email_edit_text);
-        passwordEditText = findViewById(R.id.password_edit_text);
-        loginBtn = findViewById(R.id.login_btn);
-        progressBar = findViewById(R.id.progress_bar);
-        createAccountBtnTextView = findViewById(R.id.create_account_text_view_btn);
-
-        loginBtn.setOnClickListener((v)-> loginUser() );
-        createAccountBtnTextView.setOnClickListener((v)->startActivity(new Intent(LoginActivity.this,CreateAccountActivity.class)) );
+    @Override//
+    protected void onCreate(Bundle savedInstanceState) {//
+        super.onCreate(savedInstanceState);//
+        setContentView(R.layout.activity_login);//
+        emailEditText = findViewById(R.id.email_edit_text);//
+        passwordEditText = findViewById(R.id.password_edit_text);//
+        loginBtn = findViewById(R.id.login_btn);//
+        progressBar = findViewById(R.id.progress_bar);//
+        createAccountBtnTextView = findViewById(R.id.create_account_text_view_btn);//
+        loginBtn.setOnClickListener((v)-> loginUser() );//
+        createAccountBtnTextView.setOnClickListener((v)->startActivity(new Intent(LoginActivity.this,CreateAccountActivity.class)) );//
 
     }
 
