@@ -21,16 +21,15 @@
             android:textStyle="bold"/>
 
         <ImageButton
-            android:id="@+id/menu_btn"
             android:layout_width="36dp"
             android:layout_height="36dp"
+            android:id="@+id/menu_btn"
+            android:src="@drawable/ic_baseline_menu_24"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
+            app:tint="@color/white"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/ic_baseline_menu_24"
-            app:tint="@color/white" />
-
-
+            />
 
     </RelativeLayout>
 
@@ -48,7 +47,7 @@
         android:backgroundTint="@color/white"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:src="@drawable/baseline_add_24"
+        android:src="@drawable/ic_baseline_add_24"
         />
 
 
