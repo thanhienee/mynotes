@@ -46,4 +46,5 @@
     <string name="title_activity_create_account">CreateAccountActivity</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_note_details">NoteDetailsActivity</string>
+    <string name="title_activity_change_password">ChangePassword</string>
 </resources>
