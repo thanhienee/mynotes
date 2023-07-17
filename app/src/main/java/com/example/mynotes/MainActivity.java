@@ -52,6 +52,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+    private void search(String query) {
+        Query baseQuery = Utility.getCollectionReferenceForNotes().orderBy("timestamp", Query.Direction.DESCENDING);
+
+        Query searchQuery = baseQuery.whereEqualTo("title", query)
+                .orderBy("timestamp", Query.Direction.DESCENDING);
+
+        FirestoreRecyclerOptions<Note> options = new FirestoreRecyclerOptions.Builder<Note>()
+                .setQuery(searchQuery, Note.class)
+                .build();
+
+        noteAdapter.updateOptions(options);
+    }
 
     private void showMenu() {
         PopupMenu popupMenu = new PopupMenu(MainActivity.this,menuBtn);
@@ -65,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(new Intent(MainActivity.this,LoginActivity.class));
                     finish();
                     return true;
-                } else {
+                }else {
                     Intent intent = new Intent(MainActivity.this,ChangePassword.class);
                     startActivity(intent);
                     finish();

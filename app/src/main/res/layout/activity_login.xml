@@ -27,6 +27,7 @@
             android:layout_width="385dp"
             android:layout_height="81dp"
             android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
             android:src="@drawable/ok" />
         <!--        <TextView-->
         <!--            android:layout_width="match_parent"-->
@@ -86,6 +87,14 @@
             android:text="LogIn"
             android:textSize="16sp" />
 
+        <TextView
+            android:id="@+id/tv_reset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Forget Password" />
+
+
         <ProgressBar
             android:id="@+id/progress_bar"
             android:layout_width="24dp"
@@ -115,5 +124,7 @@
             android:text="Create Account"/>
 
     </LinearLayout>
+
+
 
 </RelativeLayout>
