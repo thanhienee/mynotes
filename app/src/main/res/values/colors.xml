@@ -8,13 +8,16 @@
     <color name="light_blue_A200">#FF40C4FF</color>
     <color name="light_blue_A400">#FF00B0FF</color>
     <color name="black_overlay">#66000000</color>
-    <color name="color_option">#1F1F1F</color>
-    <color name="color_option_note1">#FFB6C1</color>
-    <color name="color_option_note2">#77DD77</color>
-    <color name="color_option_note3">#c39fd9</color>
-    <color name="color_option_note4">#00008B</color>
+
+<!--    <color name="color_option">#1F1F1F</color>-->
+<!--    <color name="color_option_note1">#FFB6C1</color>-->
+<!--    <color name="color_option_note2">#77DD77</color>-->
+<!--    <color name="color_option_note3">#c39fd9</color>-->
+<!--    <color name="color_option_note4">#00008B</color>-->
     <color name="splash">#66F699AB</color>
     <color name="main">#AEF5F5F8</color>
+    <color name="details">#59F5F5F8</color>
     <!--    <color name=""></color>-->
     <!--    <color name=""></color>-->
+
 </resources>

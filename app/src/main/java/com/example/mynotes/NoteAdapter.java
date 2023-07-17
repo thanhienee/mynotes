@@ -30,8 +30,8 @@ public class NoteAdapter extends FirestoreRecyclerAdapter<Note, NoteAdapter.Note
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onBindViewHolder(@NonNull NoteViewHolder holder, int position, @NonNull Note note) {
-        int color = getRandomColor();
-        holder.note_item.setBackgroundColor(holder.itemView.getResources().getColor(color, null));
+//        int color = getRandomColor();
+//        holder.note_item.setBackgroundColor(holder.itemView.getResources().getColor(color, null));
         holder.titleTextView.setText(note.title);
         holder.contentTextView.setText(note.content);
         holder.timestampTextView.setText(Utility.timestampToString(note.timestamp));
@@ -69,16 +69,16 @@ public class NoteAdapter extends FirestoreRecyclerAdapter<Note, NoteAdapter.Note
         }
     }
 
-    private int getRandomColor(){
-        List<Integer> colorList = new ArrayList<>();
-        colorList.add(R.color.color_option_note1);
-        colorList.add(R.color.color_option_note2);
-        colorList.add(R.color.color_option_note3);
-        colorList.add(R.color.light_blue_A200);
-        Random random = new Random();
-        int number = random.nextInt(colorList.size());
-        return colorList.get(number);
-
-
-    }
+//    private int getRandomColor(){
+//        List<Integer> colorList = new ArrayList<>();
+//        colorList.add(R.color.color_option_note1);
+//        colorList.add(R.color.color_option_note2);
+//        colorList.add(R.color.color_option_note3);
+//        colorList.add(R.color.light_blue_A200);
+//        Random random = new Random();
+//        int number = random.nextInt(colorList.size());
+//        return colorList.get(number);
+//
+//
+//    }
 }

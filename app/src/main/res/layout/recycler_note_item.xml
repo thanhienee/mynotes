@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/note_content_text_view"
         android:text="this can be note content that can be long"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:maxLines="2"
         android:ellipsize="end"
         android:textSize="17sp"
