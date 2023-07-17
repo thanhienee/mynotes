@@ -7,6 +7,7 @@ import com.google.firebase.Timestamp;
 public class Note {
     String title;
     String content;
+
     Timestamp timestamp;
 
     public String getTitle() {
@@ -33,10 +34,13 @@ public class Note {
         this.timestamp = timestamp;
     }
 
+
+
     public Note() {
         this.title = title;
         this.content = content;
         this.timestamp = timestamp;
+
     }
 
 
