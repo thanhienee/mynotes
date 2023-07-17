@@ -2,6 +2,10 @@ package com.example.mynotes;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.style.BackgroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,8 +15,16 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.List;
+
 public class NoteAdapter extends FirestoreRecyclerAdapter<Note, NoteAdapter.NoteViewHolder> {
     Context context;
+    private String searchQuery;
+    public void setSearchQuery(String searchQuery) {
+        this.searchQuery = searchQuery;
+        notifyDataSetChanged();
+    }
+
 
     public NoteAdapter(@NonNull FirestoreRecyclerOptions<Note> options, Context context) {
         super(options);
@@ -33,8 +45,23 @@ public class NoteAdapter extends FirestoreRecyclerAdapter<Note, NoteAdapter.Note
             intent.putExtra("docId",docId);
             context.startActivity(intent);
         });
+        if (searchQuery != null && !searchQuery.isEmpty()) {
+            highlightTextInTextView(holder.titleTextView, searchQuery);
+            highlightTextInTextView(holder.contentTextView, searchQuery);
+        }
 
     }
+    private void highlightTextInTextView(TextView textView, String searchQuery) {
+        String text = textView.getText().toString();
+        if (text.contains(searchQuery)) {
+            SpannableStringBuilder spannable = new SpannableStringBuilder(text);
+            int startIndex = text.toLowerCase().indexOf(searchQuery.toLowerCase());
+            int endIndex = startIndex + searchQuery.length();
+            spannable.setSpan(new BackgroundColorSpan(Color.YELLOW), startIndex, endIndex, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            textView.setText(spannable);
+        }
+    }
+
 
     @NonNull
     @Override

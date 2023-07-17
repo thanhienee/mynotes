@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
+import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     NoteAdapter noteAdapter;
+    SearchView searchView;
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,11 +33,26 @@ public class MainActivity extends AppCompatActivity {
         addNoteBtn = findViewById(R.id.add_note_btn);
         recyclerView = findViewById(R.id.recyler_view);
         menuBtn = findViewById(R.id.menu_btn);
-
+        searchView = findViewById(R.id.search_view);
         addNoteBtn.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, NoteDetailsActivity.class)));
         menuBtn.setOnClickListener((v)->showMenu());
         setupRecyclerView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                // Handle search query submission (optional)
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                // Filter the notes based on the search query
+                noteAdapter.setSearchQuery(newText);
+                return true;
+            }
+        });
     }
+
     private void showMenu() {
         PopupMenu popupMenu = new PopupMenu(MainActivity.this,menuBtn);
         popupMenu.getMenuInflater().inflate(R.menu.popup_menu,popupMenu.getMenu());
