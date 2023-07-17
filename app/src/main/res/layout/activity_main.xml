@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/my_primary"
+    android:background="#f2f2f7"
     android:padding="16dp"
     tools:context=".MainActivity">
     <RelativeLayout
@@ -17,7 +17,7 @@
             android:id="@+id/page_title"
             android:text="Notes"
             android:textSize="32sp"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textStyle="bold"/>
 
         <ImageButton
@@ -27,7 +27,7 @@
             android:src="@drawable/ic_baseline_menu_24"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            app:tint="@color/white"
+            app:tint="@color/black"
             android:background="?attr/selectableItemBackgroundBorderless"
             />
 
@@ -35,9 +35,11 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
+
         android:layout_height="match_parent"
         android:layout_below="@id/title_bar_layout"
-        android:id="@+id/recyler_view"/>
+        android:id="@+id/recyler_view"
+        />
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

@@ -7,6 +7,7 @@
     android:layout_marginVertical="8dp"
     android:backgroundTint="@color/white"
     android:background="@drawable/rounded_corner"
+
     >
 
     <TextView
@@ -16,6 +17,8 @@
         android:text="note title"
         android:textColor="@color/black"
         android:textSize="18sp"
+        android:textStyle="bold"
+
         android:layout_marginVertical="4dp"/>
     <TextView
         android:layout_width="match_parent"
