@@ -19,7 +19,7 @@ public class LoginActivity extends AppCompatActivity {// login
     EditText emailEdittext,passwordEdittext;
     Button LoginBtn;
     ProgressBar ProgressBar;
-    TextView createAccountBtnTextView;
+    TextView createAccountBtnTextView,tv_reset,tv_back;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,9 +28,12 @@ public class LoginActivity extends AppCompatActivity {// login
         passwordEdittext = findViewById(R.id.password_edit_text);
         LoginBtn = findViewById(R.id.login_btn);
         ProgressBar = findViewById(R.id.progress_bar);
+        tv_reset = findViewById(R.id.tv_reset);
         createAccountBtnTextView = findViewById(R.id.create_account_text_view_btn);
         LoginBtn.setOnClickListener((v)-> loginUser() );
         createAccountBtnTextView.setOnClickListener((v)->startActivity(new Intent(LoginActivity.this,CreateAccountActivity.class)) );
+        tv_reset.setOnClickListener((v)->startActivity(new Intent(LoginActivity.this,ResetPassword.class)) );
+
 
     }
 

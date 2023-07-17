@@ -24,9 +24,9 @@
         android:orientation="vertical">
 
         <ImageView
-            android:layout_width="1316dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_width="385dp"
+            android:layout_height="81dp"
+            android:layout_centerHorizontal="true"
             android:src="@drawable/ok" />
         <!--        <TextView-->
         <!--            android:layout_width="match_parent"-->
@@ -75,9 +75,7 @@
             android:hint="Password"
             android:inputType="textPassword"
             android:padding="16dp"
-            android:textSize="20sp"
-
-            />
+            android:textSize="20sp" />
 
 
         <com.google.android.material.button.MaterialButton
@@ -108,8 +106,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Don't have an account? "
-            />
+            android:text="Don't have an account? "/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
