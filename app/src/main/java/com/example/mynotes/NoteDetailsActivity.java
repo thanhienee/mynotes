@@ -21,8 +21,8 @@ import com.google.firebase.firestore.DocumentReference;
 public class NoteDetailsActivity extends AppCompatActivity {
 
     EditText titleEditText, contentEditText;
-    ImageButton saveNoteBtn;
-    TextView pageTitle, deleteNote;
+    ImageButton saveNoteBtn,deleteNote;
+    TextView pageTitle;
     String title, content, docId;
     boolean isUpdateNote = false;
 
