@@ -10,10 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.Query;
@@ -47,17 +44,18 @@ public class MainActivity extends AppCompatActivity {
             public boolean onMenuItemClick(MenuItem item) {
                 //check what user choose
                 if(item.getItemId()== R.id.sign_out){
-                    FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-                    firebaseAuth.getCurrentUser().delete().addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            startActivity(new Intent(MainActivity.this,LoginActivity.class));
-                        }
-                    });
-
+                    FirebaseAuth.getInstance().signOut();
+                    startActivity(new Intent(MainActivity.this,LoginActivity.class));
+                    finish();
+                    return true;
+                } else {
+                    Intent intent = new Intent(MainActivity.this,ChangePassword.class);
+                    startActivity(intent);
+                    finish();
+                    return true;
                 }
-                return true;
             }
+
         });
         popupMenu.show();
     }
