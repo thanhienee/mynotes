@@ -8,11 +8,9 @@
     android:padding="16dp"
     tools:context=".MainActivity">
     <RelativeLayout
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/title_bar_layout">
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -36,11 +34,10 @@
     </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyler_view"
-        android:layout_width="395dp"
-        android:layout_height="591dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_below="@id/title_bar_layout"
-        android:layout_marginTop="66dp" />
+        android:id="@+id/recyler_view"/>
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -53,12 +50,6 @@
         android:src="@drawable/ic_baseline_add_24"
         />
 
-    <SearchView
-        android:id="@+id/search_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:queryHint="Search notes" />
 
 
 </RelativeLayout>

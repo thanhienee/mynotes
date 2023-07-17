@@ -1,11 +1,13 @@
 package com.example.mynotes;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
@@ -19,10 +21,12 @@ import com.google.firebase.firestore.DocumentReference;
 public class NoteDetailsActivity extends AppCompatActivity {
 
     EditText titleEditText, contentEditText;
-    ImageButton saveNoteBtn;
-    TextView pageTitle,deleteNote;
-    String title,content,docId;
+    ImageButton saveNoteBtn,deleteNote;
+    TextView pageTitle;
+    String title, content, docId;
     boolean isUpdateNote = false;
+
+    AlertDialog.Builder builder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,13 +43,13 @@ public class NoteDetailsActivity extends AppCompatActivity {
         content = getIntent().getStringExtra("content");
         docId = getIntent().getStringExtra("docId");
         //check if data is null
-        if(docId!=null && !docId.isEmpty()){
+        if (docId != null && !docId.isEmpty()) {
             isUpdateNote = true;
             titleEditText.setText(title);
             contentEditText.setText(content);
         }
         //change title if not add new
-        if (isUpdateNote){
+        if (isUpdateNote) {
             pageTitle.setText("Edit your note");
             deleteNote.setVisibility(View.VISIBLE);
         }
@@ -67,9 +71,10 @@ public class NoteDetailsActivity extends AppCompatActivity {
             }
         });
 //        saveNoteBtn.setOnClickListener((v -> saveNote()));
-        deleteNote.setOnClickListener((v -> deleteNoteInFireBase()));
+        //delete
+        builder = new AlertDialog.Builder(this);
+        deleteNote.setOnClickListener((v -> setAlert()));
     }
-
 
 
     //    void saveNote(){
@@ -89,7 +94,7 @@ public class NoteDetailsActivity extends AppCompatActivity {
     void saveNoteToFireBase(Note note) {
         DocumentReference documentReference;
         //check if update mode
-        if(isUpdateNote == true){
+        if (isUpdateNote == true) {
             documentReference = Utility.getCollectionReferenceForNotes().document(docId);
         } else {
             documentReference = Utility.getCollectionReferenceForNotes().document();
@@ -100,7 +105,7 @@ public class NoteDetailsActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
                     // note is added
-                    if(isUpdateNote == true){
+                    if (isUpdateNote == true) {
                         Utility.showToast(NoteDetailsActivity.this, "Note update successfully!");
                     } else {
                         Utility.showToast(NoteDetailsActivity.this, "Note added successfully!");
@@ -112,9 +117,10 @@ public class NoteDetailsActivity extends AppCompatActivity {
             }
         });
     }
+
     private void deleteNoteInFireBase() {
         DocumentReference documentReference;
-            documentReference = Utility.getCollectionReferenceForNotes().document(docId);
+        documentReference = Utility.getCollectionReferenceForNotes().document(docId);
         documentReference.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
@@ -127,6 +133,24 @@ public class NoteDetailsActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    // alert before delete
+    private void setAlert() {
+        builder.setTitle("Alert!!").setMessage("Do you want to delete this note");
+        builder.setCancelable(true).setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                deleteNoteInFireBase();
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        builder.create().show();
     }
 }
 
